@@ -1,0 +1,51 @@
+<section class="panel panel-collapsed">
+  <div class="panel-summary">
+    <div>
+      <input id="in-home" name="in-home-check" (click)="clickEvent2()" type="checkbox" [(ngModel)]="filter.true"
+        (ngModelChange)="filterChange($event)" />
+      <label aria-checked="false" class="whitespace-none" for="in-home" role="checkbox" tabindex="0"
+        aria-label="Jag vill få leverans in i kylen och jag har ett Gluelås."><span></span> In i kylen-leverans
+        <div class="tag tag-default">För dig med Gluelås</div></label>
+    </div>
+  </div>
+</section>
+
+<section class="panel delivery-time">
+  <h2 role="heading" tabindex="0" aria-expanded="true">
+    Leveranstid
+  </h2>
+
+  <div class="panel-content">
+    <h4 class="table-heading">
+      Möjlighet att ändra order till idag kl 13:00
+      <span class="small-text">
+        <i class="fa fa-check text-success"></i>
+        Du får SMS med exakt leveranstid
+      </span>
+    </h4>
+    <ul class="time-picker table" role="radiogroup" aria-label="Välj leveranstid den 19 Februari">
+      <li ng-reflect-ng-class="[object Object]" aria-disabled="false"
+        *ngFor="let deliveryTimes of delTimes | orderBy : ['startTime']">
+
+        <input aria-hidden="true" (click)="clickEvent()" name="delivery-time-slot" tabindex="-1" type="radio"
+          id="47704" />
+
+        <label class="small" role="radio" tabindex="0" for="47704" aria-checked="false">
+          <span></span>
+          {{ deliveryTimes.startTime | slice:0:5 }} -
+          <span class="sr">till</span> {{ deliveryTimes.stopTime | slice:0:5 }}
+          <br>
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="panel-footer">
+    <button class="pull-right" [ngClass]="status ? '' : 'disabled'" role="button" tabindex="0" type="button"
+      aria-label="Gå till nästa steg, betalning">
+      <strong>Nästa - Betalningssätt</strong>
+    </button>
+  </div>
+</section>
+
+
